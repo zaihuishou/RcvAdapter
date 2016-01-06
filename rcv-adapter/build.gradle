@@ -1,0 +1,46 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.3.4'
+    }
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+}
+
+publish {
+    userOrg = 'zaihuishou'
+    groupId = 'com.zaihuishou'
+    artifactId = 'rcv-adapter'
+    publishVersion = '0.1.0'
+    licences = 'The Apache Software License, Version 2.0'
+    desc = 'Oh hi, this is a adapter of RecyclerView,it it easy to set multi item type'
+    website = 'https://github.com/zaihuishou/MultiImagePick'
+}
